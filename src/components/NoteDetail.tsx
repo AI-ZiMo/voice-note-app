@@ -5,6 +5,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, auth, storage } from "../firebase";
 import { ChevronLeft, Edit, Image as ImageIcon, Loader } from "lucide-react";
 import FullScreenImage from "./FullScreenImage";
+import Comments from './Comments';
 
 interface Note {
   id: string;
@@ -169,7 +170,7 @@ const NoteDetail: React.FC = () => {
 
   return (
     <div className="note-detail min-h-screen bg-sky-200 p-4">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <Link to="/" className="flex items-center text-sky-700 mb-4">
           <ChevronLeft size={20} />
           <span className="ml-1">Back to Home</span>
@@ -289,6 +290,7 @@ const NoteDetail: React.FC = () => {
             )}
           </div>
         )}
+        <Comments noteId={note.id} />
       </div>
       {fullScreenImage !== null && (
         <FullScreenImage
